@@ -1,0 +1,86 @@
+﻿@model UploadPictureAjax.Models.Product
+@{
+    ViewBag.Title = "AddNewProduct";
+}
+
+<style>
+    img {
+        max-width: 95%;
+        height: 30px;
+    }
+</style>
+<div id="message"></div>
+<h2>AddNewProduct</h2>
+<form id="AddNewProduct" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+        <label>Product Name</label>
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Product Name</label>
+        <input id="ImageUpload" name="ImageUpload" class=" form-control" type="file" />@Model.PicUrl
+    </div>
+    <button id="btn-submit" type="submit"  class="btn btn-danger">Submit</button>
+</form>
+<div class="tbl"></div>
+<script>
+    function LoadData() {
+        $.ajax({
+            url: "/Product/ProductLoad",
+            type: "POST",
+            success: function (rs) {
+                $(".tbl").html(rs);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        LoadData();
+        $("#AddNewProduct").on('submit', function (e) {
+            e.preventDefault();
+            var formdata = new FormData();
+            formdata.append('Id', $('#Id').val());
+            formdata.append('ProductName', $('#ProductName').val());
+            
+                formdata.append('ImageUpload', $('input[type="file"]')[0].files[0]);
+            if ($("#Id").val()) {
+              
+                $.ajax({
+                    type: "POST",
+                    url: "/Product/Update",
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function (rs) {
+                        if (rs.success) alert("Thành công!");
+                        else alert("Thất bại");
+                        LoadData();
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/Product/SaveData",
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function(rs) {
+                        if (rs.success) alert("Thành công!");
+                        else alert("Thất bại");
+                        LoadData();
+                    }
+                });
+            }
+
+            
+        });
+    });
+</script>
+<div class="panel">
+
+
+
+
+</div>

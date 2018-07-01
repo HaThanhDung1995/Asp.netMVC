@@ -1,0 +1,26 @@
+﻿@model List<UploadPictureAjax.Models.Product>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ảnh</th>
+        <th>Tên</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.PicUrl"/>
+            </td>
+            <td>
+                @item.ProductName
+            </td>
+            <td>
+                <a href="/Product/Edit/@item.Id">Sửa</a>
+            </td>
+        </tr>
+    }
+    
+    </tbody>
+</table>
