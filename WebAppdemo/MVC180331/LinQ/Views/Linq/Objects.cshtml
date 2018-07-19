@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Objects";
+}
+
+<h2>Objects</h2>
+
+<h2>Evens</h2>
+
+    @foreach (var ni in Model)
+    {
+        <ul>
+            <li>@ni.Value</li>
+            <li>@ni.Rate</li>
+        </ul>
+    }

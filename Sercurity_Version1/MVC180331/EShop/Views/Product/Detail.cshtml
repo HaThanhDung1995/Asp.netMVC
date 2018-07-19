@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+}
+<script src="~/Scripts/eshop.js"></script>
+<h2>Details of Product</h2>
+
+<div class="panel panel-default nn-detail">
+    <div class="panel-heading">@Model.Name</div>
+    <div class="panel-body text-center">
+        <a href="/Product/Detail/@Model.Id">
+            <img src="~/images/products/@Model.Image" />
+        </a>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>Discount: @Html.FormatValue(Model.Discount, "{0:p}")</li>
+            <li>Product Date: @Html.FormatValue(Model.ProductDate, "{0:dd-MM-yyyy}")</li>
+            <li>Special?: @(Model.Special ? "Yes" : "No")</li>
+            <li>Latest?: @(Model.Latest ? "Yes" : "No")</li>
+            <li>Available?: @(Model.Available ? "Yes" : "No")</li>
+            <li>Category: @Model.Category.NameVN</li>
+            <li>Supplier: @Model.Supplier.Name</li>
+        </ul>
+        <div>@Model.Description</div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="pull-left">@Html.FormatValue(Model.UnitPrice, "{0:c}")/@Model.UnitBrief</div>
+            <div class="pull-right" data-id="@Model.Id">
+                @Html.Partial("_Buttons")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nn-thumbnail">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Same Category</a></li>
+        <li><a data-toggle="tab" href="#menu1">Same Supplier</a></li>
+        <li><a data-toggle="tab" href="#menu2">Items Viewed</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>HÀNG CÙNG LOẠI</h3>
+            @foreach (var item in Model.Category.Products)
+            {
+                <a href="/Product/Detail/@item.Id">
+                    <img src="~/images/products/@item.Image" />
+                </a>
+            }
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>HÀNG CÙNG CÙNG NHÀ CUNG CẤP</h3>
+            @foreach (var item in Model.Supplier.Products)
+            {
+                <a href="/Product/Detail/@item.Id">
+                    <img src="~/images/products/@item.Image" />
+                </a>
+            }
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>HÀNG ĐÃ XEM</h3>
+            @foreach (var item in ViewBag.Views)
+            {
+                <a href="/Product/Detail/@item.Id">
+                    <img src="~/images/products/@item.Image" />
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_Dialog")

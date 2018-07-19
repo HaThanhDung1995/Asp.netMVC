@@ -1,0 +1,92 @@
+﻿@using EShop.i18n
+@model EShop.Models.Order
+@{
+    ViewBag.Title = @Global.OrderProduct;
+}
+
+<div class="panel panel-danger">
+    <div class="panel-heading">@Global.ChosenProduct</div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Global.Id</th>
+                    <th>@Global.Name</th>
+                    <th>@Global.UnitPrice</th>
+                    <th>@Global.Discount</th>
+                    <th>@Global.Quantity</th>
+                    <th>@Global.Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in XSession.Cart.Items)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Name</td>
+                        <td>@Html.FormatValue(p.UnitPrice, "{0:c}")</td>
+                        <td>@Html.FormatValue(p.Discount, "{0:p}")</td>
+                        <td>@p.Quantity</td>
+                        <td>@Html.FormatValue((p.Quantity * p.UnitPrice * (1 - p.Discount)), "{0:c}")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Global.OrderProduct</div>
+    <div class="panel-body">
+        @Html.ValidationSummary()
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>@Global.OrderId</label>
+                    @Html.TextBoxFor(m => m.Id, new { @class = "form-control", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>@Global.CustomerId</label>
+                    @Html.TextBoxFor(m => m.CustomerId, new { @class = "form-control", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>@Global.OrderDate</label>
+                    @Html.TextBoxFor(m => m.OrderDate, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = "true" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>@Global.DeliveryDate</label>
+                    @Html.TextBoxFor(m => m.RequireDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>@Global.Receiver</label>
+                    @Html.TextBoxFor(m => m.Receiver, new { @class = "form-control" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>@Global.Address</label>
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>@Global.Amount</label>
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @readonly = "true" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label>@Global.Note</label>
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4" })
+                </div>
+                <div class="form-group col-sm-12">
+                    <button class="btn btn-danger">@Global.OrderProduct</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

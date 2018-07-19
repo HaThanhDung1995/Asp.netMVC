@@ -1,0 +1,42 @@
+﻿@model EShop.Models.Customer
+@{
+    ViewBag.Title = "Đăng ký thành viên";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">ĐĂNG KÝ THÀNH VIÊN</div>
+    <div class="panel-body">
+        @Html.ValidationSummary(true)
+        @using (Html.BeginForm("Register", "Account",
+            FormMethod.Post, new { enctype = "multipart/form-data" })) 
+        {
+            <div class="form-group">
+                <label>Tên đăng nhập</label>
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Id)
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="form-group">
+                <label>Họ và tên</label>
+                @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Fullname)
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="form-group">
+                <label>Hình</label>
+                <input type="file" name="UpPhoto" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger">Đăng ký</button>
+            </div>
+        }
+    </div>
+</div>

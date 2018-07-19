@@ -1,0 +1,19 @@
+﻿@model List<AccountLogin.Models.Product>
+<style>
+    img {
+        width: 95%;
+        height: 150px;
+    }
+</style>
+@foreach (var p in Model)
+{
+    <div class="col-sm-4 text-center">
+        <div class="panel panel-default">
+            <div class="panel-heading">@p.Name</div>
+            <div class="panel-body">
+                <img src="~/Images/products/@p.Image" />
+            </div>
+        </div>
+    </div>
+}
+

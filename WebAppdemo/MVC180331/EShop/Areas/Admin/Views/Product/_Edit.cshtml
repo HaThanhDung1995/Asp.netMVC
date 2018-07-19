@@ -1,0 +1,92 @@
+﻿@model EShop.Models.Product
+
+@using (Html.BeginForm("Index", "Product",
+    FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    <div class="panel panel-danger">
+        <div class="panel-heading">@TempData["Message"]</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Id</label>
+                    @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Name</label>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Unit Price</label>
+                    @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Unit Brief</label>
+                    @Html.TextBoxFor(m => m.UnitBrief, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Discount</label>
+                    @Html.TextBoxFor(m => m.Discount, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Quantity</label>
+                    @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Product Date</label>
+                    @Html.TextBoxFor(m => m.ProductDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Features</label>
+                    <div>
+                        <label>@Html.CheckBoxFor(m => m.Available) Available</label>
+                        <label>@Html.CheckBoxFor(m => m.Special) Special</label>
+                        <label>@Html.CheckBoxFor(m => m.Latest) Latest</label>
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Supplier</label>
+                    @Html.DropDownList("SupplierId", null, new { @class = "form-control" })
+                </div>
+
+               
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Category</label>
+                    @Html.DropDownList("CategoryId", null, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>View Count</label>
+                    @Html.TextBoxFor(m => m.Views, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group col-sm-4">
+                    <label>Image</label>
+                    <input type="file" name="UpImage" class="form-control" />
+                    @Html.HiddenFor(m => m.Image)
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label>Description</label>
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 4 })
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            @Html.Partial("_Buttons")
+        </div>
+    </div>
+}
+

@@ -1,0 +1,90 @@
+﻿@model EShop.Models.Order
+@{
+    ViewBag.Title = "Đặt hàng";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">ĐẶT HÀNG</div>
+    <div class="panel-body">
+        @Html.ValidationSummary()
+        @using (Html.BeginForm("Cancel", "Order"))
+        {
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Mã đơn hàng</label>
+                    @Html.TextBoxFor(m => m.Id, new { @class = "form-control", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Khách hàng</label>
+                    @Html.TextBoxFor(m => m.CustomerId, new { @class = "form-control", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Ngày đặt</label>
+                    @Html.TextBoxFor(m => m.OrderDate, "{0:MM/dd/yyyy}", new { @class = "form-control", @readonly = "true" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Ngày cần</label>
+                    @Html.TextBoxFor(m => m.RequireDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Người nhận</label>
+                    @Html.TextBoxFor(m => m.Receiver, new { @class = "form-control", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Địa chỉ nhận</label>
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @readonly = "true" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Tổng tiền</label>
+                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @readonly = "true" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label>Ghi chú</label>
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4", @readonly = "true" })
+                </div>
+                <div class="form-group col-sm-12">
+                    <button class="btn btn-danger">Hủy</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">CHI TIẾT ĐƠN HÀNG</div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Unit Price</th>
+                    <th>Discount</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@d.Product.Id</td>
+                        <td>@d.Product.Name</td>
+                        <td>@Html.FormatValue(d.UnitPrice, "{0:c}")</td>
+                        <td>@Html.FormatValue(d.Discount, "{0:p}")</td>
+                        <td>@d.Quantity</td>
+                        <td>@Html.FormatValue((d.Quantity * d.UnitPrice * (1 - d.Discount)), "{0:c}")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

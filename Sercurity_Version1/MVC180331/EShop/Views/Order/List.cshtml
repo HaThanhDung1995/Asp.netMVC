@@ -1,0 +1,36 @@
+﻿@model List<EShop.Models.Order>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Order Date</th>
+            <th>Receiver</th>
+            <th>Address</th>
+            <th>Amount</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.OrderDate</td>
+                <td>@o.Receiver</td>
+                <td>@o.Address</td>
+                <td>@o.Amount</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="/Order/Detail/@o.Id">
+                        <span class="glyphicon glyphicon-search"></span> Chi tiết
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

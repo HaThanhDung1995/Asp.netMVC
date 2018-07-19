@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<script>
+    $(document).ready(function () {
+        $('#btns').click(function () {
+
+            var fullname = $('#fullname').val();
+
+            $.ajax({
+                type: 'GET',
+                data: { name: fullname },
+                url: '@Url.Action("Displayname", "Home")',
+                success: function (result) {
+                    alert(result);
+                }
+
+            });
+        });
+    })
+</script>
+<form>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="fullname" class="form-control" />
+    </div>
+    <button class="btn btn-primary" id="btns">Submit</button>
+</form>
+<span id="result"></span>

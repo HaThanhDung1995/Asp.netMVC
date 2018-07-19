@@ -1,0 +1,12 @@
+﻿@model global::AjaxHelper.Models.Category
+@{
+    ViewBag.Title = "CreateProduct";
+}
+
+<h2>CreateProduct</h2>
+@using (Ajax.BeginForm("CreateProduct","Home",new AjaxOptions()
+{
+    HttpMethod = "POST",
+    OnSuccess = "demo.saveSuccess"
+},new { id = "frmCreateProduct", @class = "form-horizontal" }
+    )) { }

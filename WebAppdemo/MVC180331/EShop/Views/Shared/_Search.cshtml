@@ -1,0 +1,10 @@
+﻿<div class="nn-cart">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("ListByKeywords", "Product")) { 
+                @Html.TextBox("Keywords", null, 
+                    new { placeholder = "Keywords", @class = "form-control" })
+            }
+        </div>
+    </div>
+</div>

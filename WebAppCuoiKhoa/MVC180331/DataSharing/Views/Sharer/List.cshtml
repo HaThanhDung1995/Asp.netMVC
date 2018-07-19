@@ -1,0 +1,14 @@
+﻿@model List<DataSharing.Models.Student>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach (var sv in Model)
+{
+    <ul>
+        <li>Id: @sv.Id</li>
+        <li>Name: @sv.Name</li>
+        <li>Mark: @sv.Mark</li>
+    </ul>
+}

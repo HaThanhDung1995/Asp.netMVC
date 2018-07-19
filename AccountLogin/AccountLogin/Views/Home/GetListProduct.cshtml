@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AccountLogin.Models.Product>
+
+@{
+    ViewBag.Title = "GetListProduct";
+}
+
+<h2>GetListProduct</h2>
+
+<p>
+    <button class="btn btn-success" id="createProduct" data-url="@Url.Action("CreateProduct")">Create</button>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.Raw(item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*Form getlist khi create thành công*@
+@using (Ajax.BeginForm("GetListProduct", "Home", new AjaxOptions
+{
+    HttpMethod = "GET",
+    OnSuccess = "demo.init", /*sau khi create thành công sẽ gọi hàm init trong file js demo*/
+    UpdateTargetId = "dvListProduct" /*dữ liệu sẽ đc update lại trong div mang id này*/
+}, new { id = "frmGetListProduct" })) { }

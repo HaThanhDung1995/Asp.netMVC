@@ -1,0 +1,48 @@
+﻿@using EShop.i18n
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobi Technology</title>
+	
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/eshop.js"></script>
+
+    @RenderSection("scripts", required: false)
+    
+</head>
+<body>
+    <div class="container">
+        <header class="nn-header row">
+        	<div class="nn-company">
+	            <h1><a style="text-decoration: none; color: black" href="/Home/Index">Tobi Technology</a></h1>
+	            <h5>Say hello to the future</h5>
+            </div>
+            <img class="pull-right" src="~/images/AppleDistributorLogo.png" id="head-img" />
+        </header>
+
+        @Html.Partial("_Menu")
+
+        <div class="nn-sheet row">
+
+            <article class="col-sm-12">
+                <div class="nn-body">
+                	@RenderBody()
+                </div>
+            </article>
+
+        </div>
+
+        <footer class="panel panel-default row">
+	        <div class="panel-heading">
+	        	<p class="text-center">Tobi &copy; 2017. @Global.Allrightsreserved</p>
+	        </div>
+        </footer>
+    </div>
+</body>
+</html>

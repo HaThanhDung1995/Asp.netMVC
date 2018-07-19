@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.DropDownList("Role", null,new{@class="form-control"})
+<ul class="list-unstyled ">
+    @foreach (var item in ViewBag.Action)
+    {
+        <li class="col-sm-3"><input type="checkbox" value="@item.Id" />@item.Name</li>
+    }
+</ul>
+<script>
+   $(document).ready(function() {
+       $("#Role").change(function() {
+           var rid = $(this).val();
+           $.ajax({
+               url: "/Admin/ActionRole/GetAction",
+               data: { roleid: rid },
+               success: function(response) {
+                   $(":checkbox").prop("checked", false);
+                   for (i = 0; i < response.length; i++) {
+                       $(":checkbox[value="+response[i]+"]").prop("checked", true);
+                   }
+               }
+
+       });
+       });
+       $("#Role").change();
+       $(":checkbox").click(function() {
+           var aid = $(this).val();
+           var rid = $("#Role").val();
+           $.ajax({
+               url: "/Admin/ActionRole/AddOrDelete",
+               data: { WebActionId:aid, roleid: rid },
+               success: function(response) {
+                   alert(response);
+               }
+           });
+       });
+   })
+</script>

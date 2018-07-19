@@ -1,0 +1,32 @@
+﻿@model List<LinQ.Models.Report>
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2>Inventory</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Count</th>
+            <th>Value</th>
+            <th>Min Price</th>
+            <th>Max Price</th>
+            <th>Avg Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Category</td>
+                <td>@r.Count</td>
+                <td>@r.Value</td>
+                <td>@r.MinPrice</td>
+                <td>@r.MaxPrice</td>
+                <td>@Html.FormatValue(r.AvgPrice, "{0:#,###.#0}")</td>
+            </tr>
+        }
+    </tbody>
+</table>

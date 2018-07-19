@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "SearchJson";
+}
+
+<h2>SearchJson</h2>
+
+<input id="kw" placeholder="Keywords" />
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody id="results"></tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#kw").keyup(function () {
+                var x = $("#kw").val();
+                $.post("/Ajax/SearchJSon",
+                    {Keywords: x},
+                    function (response) {
+                        $("#results").html("");
+                        //for (var i = 0; i < response.length; i++) {
+                        //    var p = response[i];
+                        //    var tr = $("<tr/>");
+                        //    tr.append("<td>" + p.Name + "</td>");
+                        //    tr.append("<td>" + p.UnitPrice + "</td>");
+                        //    $("#results").append(tr);
+                        //}
+
+                        $(response).each(function (i, p) {
+                            var tr = $("<tr/>");
+                            tr.append("<td>" + p.Name + "</td>");
+                            tr.append("<td>" + p.UnitPrice + "</td>");
+                            $("#results").append(tr);
+                        });
+                    }
+                );
+            });
+        });
+    </script>
+}

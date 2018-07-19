@@ -1,0 +1,12 @@
+﻿@model List<EF.Models.Category>
+
+<div class="panel panel-default">
+    <div class="panel-heading">LOẠI HÀNG</div>
+    <div class="list-group">
+        @foreach (var c in Model)
+        {
+            <a href="@Url.Action("List", "Product", new { Id = c.Id })" 
+               class="list-group-item">@c.NameVN</a>
+        }
+    </div>
+</div>

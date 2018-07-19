@@ -1,0 +1,12 @@
+﻿@model AjaxPractice.Models.Category
+@{
+    ViewBag.Title = "_Create";
+}
+
+<h2>_Create</h2>
+@using (Ajax.BeginForm("Create","Test",new AjaxOptions()
+{
+    HttpMethod = "GET",
+    UpdateTargetId = "ListCate", //chi danh cho Get,
+    OnSuccess = "demo.init"
+}, new { id = "dvlistcate" })) { }

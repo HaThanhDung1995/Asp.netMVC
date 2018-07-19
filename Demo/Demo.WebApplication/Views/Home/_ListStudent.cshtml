@@ -1,0 +1,21 @@
+﻿@using Demo.Model
+@model IEnumerable<StudentModel>
+
+<table class="table table-bordered">
+    <tr>
+        <th style="width: 50px"><a class="btn btn-primary" href="@Url.Action("CretaeStudent")">Create</a></th>
+        <th>Tên sinh viên</th>
+        <th style="width: 50px;"></th>
+    </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            @*new {id = student.id} truyền param vào action*@
+            <td><a class="btn btn-success" href="@Url.Action("UpdateStudent", new {id = student.id})">Edit</a></td>
+            <td>@student.name</td>
+            <td>
+                @Html.ActionLink("Delete","DeleteStudent", new {studentId = student.id}, new {@class = "btn btn-danger"})
+            </td>
+        </tr>
+    }
+</table>

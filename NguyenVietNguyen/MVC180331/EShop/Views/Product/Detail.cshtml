@@ -1,0 +1,75 @@
+﻿@using EShop.i18n
+
+@{
+    ViewBag.Title = @Global.Detail;
+}
+
+<h2>Details of @Model.Name</h2>
+
+<div class="panel panel-default nn-detail">
+    <div class="panel-heading">@Model.Name</div>
+    <div class="panel-body text-center">
+        <a href="/Product/Detail/@Model.Id">
+            <img src="~/images/products/@Model.Image" />
+        </a>
+    </div>
+    <div class="panel-body">
+        <ul class="list-unstyled">
+            <li>@Global.Disc: @Html.FormatValue(Model.Discount, "{0:p}")</li>
+            <li>@Global.ProductDate: @Html.FormatValue(Model.ProductDate, "{0:dd-MM-yyyy}")</li>
+            <li>@Global.Special: @(Model.Special ? "Yes" : "No")</li>
+            <li>@Global.Late: @(Model.Latest ? "Yes" : "No")</li>
+            <li>@Global.ProductAvailability: @(Model.Available ? "Yes" : "No")</li>
+            <li>@Global.Category: @Model.Category.NameVN</li>
+            <li>@Global.Suppliers: @Model.Supplier.Name</li>
+        </ul>
+        <div>@Global.Description: @Model.Description</div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="pull-left">@Html.FormatValue(Model.UnitPrice, "{0:c}")/@Model.UnitBrief</div>
+            <div class="pull-right" data-id="@Model.Id">
+                @Html.Partial("_Buttons")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nn-thumbnail">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">@Global.SameCategory</a></li>
+        <li><a data-toggle="tab" href="#menu1">@Global.SameSupplier</a></li>
+        <li><a data-toggle="tab" href="#menu2">@Global.ItemsViewed</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>@Global.SameCategory</h3>
+            @foreach (var item in Model.Category.Products)
+            {
+                <a href="/Product/Detail/@item.Id">
+                    <img src="~/images/products/@item.Image" />
+                </a>
+            }
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>@Global.SameSupplier</h3>
+            @foreach (var item in Model.Supplier.Products)
+            {
+                <a href="/Product/Detail/@item.Id">
+                    <img src="~/images/products/@item.Image" />
+                </a>
+            }
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>@Global.ItemsViewed</h3>
+            @foreach (var item in ViewBag.Views)
+            {
+                <a href="/Product/Detail/@item.Id">
+                    <img src="~/images/products/@item.Image" />
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_Dialog")

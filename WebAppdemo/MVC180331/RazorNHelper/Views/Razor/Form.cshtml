@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+}
+
+<h2>Form</h2>
+
+@using(Html.BeginForm()){
+    <input/>
+}
+<hr />
+@using (Html.BeginForm("Send", "Mail"))
+{
+    <input />
+}
+<hr />
+@using (Html.BeginForm("Send", "Mail", 
+    FormMethod.Post, new { enctype="multipart/form-data"}))
+{
+    <input type="file" />
+}

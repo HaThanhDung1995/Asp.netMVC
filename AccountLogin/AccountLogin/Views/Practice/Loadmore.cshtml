@@ -1,0 +1,51 @@
+﻿
+
+<h2>LoadMore</h2>
+<input placeholder="Keywords" id="kw" />
+<div class="page"></div>
+<img class="loading" src="~/Images/loading.gif" style="display:none" />
+@section scripts{
+    <script>
+        pageNo = 0;
+        pageCount =@ViewBag.PageCount;
+        $(document).ready(function () {
+
+            loading();
+            $(window).scroll(function() {
+                var dh = $(document).height();
+                var st = $(window).scrollTop();
+                var wh = $(window).height();
+                if (dh == st + wh && pageNo < pageCount) {
+                    pageNo++;
+                    loading();
+                }
+            });
+            $("#kw").keyup(function () {
+                load();
+            });
+        });
+        function loading() {
+            $(".loading").show();
+            $.ajax({
+                url: "/Practice/Loadmore",
+                type: "POST",
+                data: { PageNo: pageNo },
+                success: function(response) {
+                    $(".page").append(response);
+                    $(".loading").hide();
+                }
+            });
+        }   
+        function load() {
+            var name = $("#kw").val();
+            $.ajax({
+                url: "/Practice/SearchAction",
+                data: { Keywords: name },
+                success: function (response) {
+                    $(".page").html(response);
+                }
+            });
+        }
+    </script>
+}
+

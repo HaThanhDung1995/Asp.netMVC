@@ -1,0 +1,45 @@
+﻿@using EShop.i18n
+<div class="navbar navbar-inverse row">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse">
+        <!--Menu-->
+        <ul class="nav navbar-nav">
+            <li><a href="/Home/Index"><span class="glyphicon glyphicon-home"></span> @Global.Home</a></li>
+            <li><a href="/Home/About"><span class="glyphicon glyphicon-th-list"></span>@Global.About</a></li>
+            <li><a href="/Home/Contact"><span class="glyphicon glyphicon-earphone"></span>@Global.Contact</a></li>
+            <li><a href="/Admin/Home/Index"><span class=""></span>@Global.Manager</a></li>
+            <li><a href=""><span class="glyphicon glyphicon-question-sign"></span>@Global.Question</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>@Global.Account<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @if (XSession.User == null)
+                    {
+                        <li><a href="/Account/Login">@Global.Login</a></li>
+                        <li><a href="/Account/Forgot">@Global.ForgetPassword</a></li>
+                        <li><a href="/Account/Register">@Global.Register</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Account/Logoff">@Global.Logout</a></li>
+                        <li><a href="/Account/Change">@Global.ChangePassword</a></li>
+                        <li><a href="/Account/Edit">@Global.UpdateProfile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Order/List">@Global.Order</a></li>
+                        <li><a href="/Order/Items">@Global.BoughtProduct</a></li>
+                    }
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" >
+            <li><a href="#" data-lang="en">@Global.English</a></li>
+            <li><a href="#" data-lang="vi">@Global.Vietnamese</a></li>
+        </ul>
+        <!--Menu-->
+    </div>
+</div>

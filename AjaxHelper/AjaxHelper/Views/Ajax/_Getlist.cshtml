@@ -1,0 +1,36 @@
+﻿@model List<global::AjaxHelper.Models.Category>
+@{
+    ViewBag.Title = "_Getlist";
+}
+
+<h2>_Getlist</h2>
+<p>
+    <button class="btn btn-success" id="createProduct" data-url="@Url.Action("CreateProduct")">Create</button>
+</p>
+<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>NameVn</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.NameVN</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*Form getlist khi create thành công*@
+@using (Ajax.BeginForm("GetList", "Home", new AjaxOptions
+{
+    HttpMethod = "GET",
+    OnSuccess = "demo.init",
+    /*sau khi create thành công sẽ gọi hàm init trong file js demo*/
+    UpdateTargetId = "dvListProduct" /*dữ liệu sẽ đc update lại trong div mang id này*/
+}, new { id = "frmGetListProduct" })) { }

@@ -1,0 +1,37 @@
+﻿@using EShop.i18n
+@model List<EShop.Models.Order>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Global.Id</th>
+            <th>@Global.OrderDate</th>
+            <th>@Global.Receiver</th>
+            <th>@Global.Address</th>
+            <th>@Global.Amount</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.OrderDate</td>
+                <td>@o.Receiver</td>
+                <td>@o.Address</td>
+                <td>@o.Amount</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="/Order/Detail/@o.Id">
+                        <span class="glyphicon glyphicon-search"></span> @Global.Detail
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

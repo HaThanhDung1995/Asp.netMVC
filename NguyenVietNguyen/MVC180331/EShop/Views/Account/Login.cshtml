@@ -1,0 +1,35 @@
+﻿@using EShop.i18n
+@using EShop.i18n.Account
+@{
+    ViewBag.Title = @Global.Login;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Global.Login</div>
+    <div class="panel-body">
+        <div class="alert alert-info" style="font-size: 20px;">
+            @Html.ValidationSummary()
+        </div>
+        
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <label>@Global.Username</label>
+                @Html.TextBox("Id", null, new {@class = "form-control"})
+            </div>
+            <div class="form-group">
+                <label>@Global.Password</label>
+                @Html.TextBox("Password", null, new {@class = "form-control"})
+            </div>
+            <div class="form-group">
+                <label class="form-control">
+                    @Html.CheckBox("Remember")
+                    @Login.Remember
+                </label>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger">@Login.Button</button>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Send mail</h2>
+
+<form action="/Mailer/Send" method="post">
+    <div>
+        @ViewBag.Message
+    </div>
+    <div class="form-group">
+        <label>From</label>
+        <input name="from" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>To</label>
+        <input name="to" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Subject</label>
+        <input name="subject" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Body</label>
+        <textarea name="body" class="form-control" rows="3"></textarea>
+    </div>
+    <button class="btn btn-danger">Send</button>
+</form>

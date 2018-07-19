@@ -1,0 +1,33 @@
+﻿@model global::AjaxHelper.Models.Category
+@{
+    ViewBag.Title = "_CreateProduct";
+}
+
+<h2>_CreateProduct</h2>
+
+
+@using (Ajax.BeginForm("CreateProduct", "Home", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "demo.saveSuccess"
+}, new { id = "frmCreateProduct", @class = "form-horizontal" }))
+
+{
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+    </div>
+    <div class="modal-body">
+        
+        <div class="form-group">
+            <label> Name</label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>NameVN</label>
+            @Html.TextBoxFor(m => m.NameVN, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="modal-footer"> <input type="submit" value="Create" class="btn btn-success" /></div>
+}

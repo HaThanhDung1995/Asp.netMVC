@@ -1,0 +1,60 @@
+﻿@using EShop.i18n
+
+@{
+    ViewBag.Title = @Global.YourShoppingCart;
+}
+
+<h2>@Global.YourShoppingCart</h2>
+
+@if (XSession.Cart.Count == 0)
+{
+<h3 class="text-center alert alert-danger">@Global.EmptyCart</h3>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Global.Id</th>
+                <th>@Global.Name</th>
+                <th>@Global.UnitPrice</th>
+                <th>@Global.Discount</th>
+                <th>@Global.Quantity</th>
+                <th>@Global.Amount</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in XSession.Cart.Items)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@Html.FormatValue(p.UnitPrice, "{0:c}")</td>
+                    <td>@Html.FormatValue(p.Discount, "{0:p}")</td>
+                    <td>
+                        <input value="@p.Quantity" type="number" min="1" style="width:50px"
+                               class="nn-update-cart"
+                               data-id="@p.Id"
+                               data-price="@p.UnitPrice"
+                               data-discount="@p.Discount" />
+                    </td>
+                    <td class="nn-amount">@Html.FormatValue((p.Quantity * p.UnitPrice * (1 - p.Discount)), "{0:c}")</td>
+                    <td>
+                        <button class="btn btn-sm btn-default nn-remove-from-cart" data-id="@p.Id">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <a class="btn btn-default" href="/Cart/Clear">
+            <span class="glyphicon glyphicon-trash"></span> @Global.Clear
+        </a>
+        <a class="btn btn-default" href="/Order/Checkout">
+            @Global.CheckOut <span class="glyphicon glyphicon-hand-right"></span>
+        </a>
+    </div>
+}

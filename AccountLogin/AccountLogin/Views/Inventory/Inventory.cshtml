@@ -1,0 +1,38 @@
+﻿@model List<AccountLogin.Models.Report>
+@{
+    ViewBag.Title = "Report Product";
+}
+
+<h2>Report Product</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Sum</td>
+                        <td>Max</td>
+                        <td>Min</td>
+                        <td>Avg</td>
+                        <td>Count</td>
+                        <td>Category</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rp in Model)
+                    {
+                        <tr>
+                            <td>@rp.Sum</td>
+                            <td>@rp.MaxPrice</td>
+                            <td>@rp.MinPrice</td>
+                            <td>@rp.AvgPrice</td>
+                            <td>@rp.Count</td>
+                            <td>@rp.Category</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

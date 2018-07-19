@@ -1,0 +1,33 @@
+﻿@using EShop.i18n
+
+@{
+    ViewBag.Title = @Global.ChangePassword;
+}
+
+<div class="panel panel-danger">
+    <div class="panel-heading">@Global.ChangePassword</div>
+    <div class="panel-body">
+        @Html.ValidationSummary()
+        @using(Html.BeginForm()){
+            <div class="form-group">
+                <label>@Global.Username</label>
+                @Html.TextBox("Id", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>@Global.CurrentPassword</label>
+                @Html.TextBox("Password", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>@Global.NewPassword</label>
+                @Html.TextBox("Password1", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>@Global.ConfirmPassword</label>
+                @Html.TextBox("Password2", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger">@Global.ChangePassword</button>
+            </div>
+        }
+    </div>
+</div>

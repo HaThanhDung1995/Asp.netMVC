@@ -1,0 +1,35 @@
+﻿@using Report.Models
+
+@{
+    ViewBag.Title = "ByCategory";
+}
+
+<h2>ByCategory</h2>
+<div class="panel panel-success">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>@ViewBag.Group</th>
+            <th>Quantity</th>
+            <th>Value</th>
+            <th>Min Price</th>
+            <th>Max Price</th>
+            <th>Avg Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var Item in Model)
+        {
+            <tr>
+                <td>@Item.Group</td>
+                <td>@Item.Quantity</td>
+                <td>@Item.Value</td>
+                <td>@Item.MinPrice</td>
+                <td>@Item.MaxPrice</td>
+                <td>@Item.AvgPrice</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+

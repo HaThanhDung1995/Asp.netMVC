@@ -1,0 +1,34 @@
+﻿<div class="panel panel-default">
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Item in ViewBag.Items as List<EShop.Models.Master>)
+            {
+                <tr>
+                    <td>@Item.Id</td>
+                    <td>@Item.FullName</td>
+                    <td>@Item.Password</td>
+                    <td>@Item.Mobile</td>
+                    <td>@Item.Email</td>
+                    <td>
+                        <a href="@ViewBag.Controller/Edit/@Item.Id" class="btn btn-sm btn-default">
+                            <span class="glyphicon glyphicon-edit"></span> Edit
+                        </a>
+                        <a href="@ViewBag.Controller//Delete/@Item.Id" class="btn btn-sm btn-default">
+                            <span class="glyphicon glyphicon-trash"></span> Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

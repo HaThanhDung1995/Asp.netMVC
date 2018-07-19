@@ -1,0 +1,43 @@
+﻿@model List<Again.Models.Category>
+@{
+    ViewBag.Title = "_ListCate";
+}
+
+<h2>_ListCate</h2>
+<p><button id="Create" data-url="@Url.Action("Create")">Create</button></p>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>NameVn</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.NameVN</td>
+            <td><button class="btn btn-info update" data-url="@Url.Action("Update",new{Id=item.Id})">Update</button></td>
+            <td>@Ajax.ActionLink("Delete","Delete","Test",new{ id =item.Id},new AjaxOptions()
+           {
+               HttpMethod = "POST",
+               OnSuccess = "demo.onsuccess",
+               Confirm = "Bạn thật sự muốn xóa không?"
+           },new {@class="btn btn-danger"})</td>
+        </tr>
+
+        }
+
+    </tbody>
+</table>
+@using (Ajax.BeginForm("ListCate","Test",new AjaxOptions()
+{
+HttpMethod = "GET",
+UpdateTargetId = "listcate", //chi danh cho Get,
+OnSuccess = "demo.init"
+}, new { id = "dvlistcate" })) { }

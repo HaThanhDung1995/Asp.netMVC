@@ -1,0 +1,29 @@
+﻿@using EShop.i18n
+@foreach (var Item in ViewBag.Items as List<EShop.Models.Product>)
+{
+    <tr>
+        <td>@Item.Id</td>
+        <td>@Item.Name</td>
+        <td>@Item.UnitPrice</td>
+        <td>@Item.UnitBrief</td>
+        <td>@Item.Discount</td>
+        <td>@Item.Special</td>
+        @if (Request.Cookies["lang"] != null && Request.Cookies["lang"].Value == "vi")
+        {
+            <td>@Item.Category.NameVN</td>
+        }
+        else
+        {
+            <td>@Item.Category.Name</td>
+        }
+        
+        <td>
+            <a class="btn btn-sm btn-default" href="/Admin/Product/Edit/@Item.Id">
+                <span class="glyphicon glyphicon-star"></span> @Global.Edit
+            </a>
+            <a class="btn btn-sm btn-default" href="/Admin/Product/Delete/@Item.Id">
+                <span class="glyphicon glyphicon-star"></span> @Global.Delete
+            </a>
+        </td>
+    </tr>
+}

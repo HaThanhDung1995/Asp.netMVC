@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Model.SupplierModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table class="table table-bordered">
+    <tr>
+        @*<th style="width: 50px"><a class="btn btn-primary" href="@Url.Action("CretaeStudent")">Create</a></th>*@
+        <th>Id</th>
+        <th>Name</th>
+       
+        
+    </tr>
+    @foreach (var supplier in Model)
+    {
+        <tr>
+            <td> @supplier.Id</td>
+            <td>@supplier.Name</td>
+        </tr>
+        
+    }
+</table>

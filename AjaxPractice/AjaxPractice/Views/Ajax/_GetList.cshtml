@@ -1,0 +1,43 @@
+﻿@model List<AjaxPractice.Models.Category>
+@{
+    ViewBag.Title = "_GetList";
+}
+
+<h2>_GetList</h2>
+<p><button class="btn btn-danger" id="createcate" data-url="@Url.Action("CreateCate")">Create</button></p>
+<table class="table">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>NameVN</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.NameVN</td>
+            <td><button class="updatecate"  data-url="@Url.Action("Update",new {id=item.Id})">Edit</button></td>
+            <td>@Ajax.ActionLink("Delete", "Delete","Ajax",new{id=item.Id},new AjaxOptions()
+           {
+               
+               HttpMethod = "POST",
+               OnSuccess = "demo.onsuccess",
+               Confirm = "You want to delete this ?"
+           })</td>
+        </tr>
+    }
+    </tbody>
+</table>
+@using (Ajax.BeginForm("GetList","Ajax",new AjaxOptions()
+{
+    HttpMethod = "GET",
+    UpdateTargetId = "listcate",
+    OnSuccess = "demo.init"
+
+},new{id="loadlistcate"})) { }

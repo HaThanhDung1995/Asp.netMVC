@@ -1,0 +1,11 @@
+﻿@using EShop.i18n
+<div class="nn-cart">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("ListByKeywords", "Product")) { 
+                @Html.TextBox("Keywords", null, 
+                    new { placeholder = @Global.Search, @class = "form-control" })
+            }
+        </div>
+    </div>
+</div>

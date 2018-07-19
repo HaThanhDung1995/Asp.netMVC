@@ -1,0 +1,40 @@
+﻿@model EShop.Models.Supplier
+
+@using (Html.BeginForm("Index", "Supplier",
+    FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    <div class="panel panel-danger">
+        <div class="panel-heading">@TempData["Message"]</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label>Id</label>
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Name</label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Logo</label>
+                <input type="file" name="UpLogo" class="form-control" />
+                @Html.HiddenFor(m => m.Logo)
+            </div>
+        </div>
+        <div class="panel-footer">
+            @Html.Partial("_Buttons")
+        </div>
+    </div>
+}
+

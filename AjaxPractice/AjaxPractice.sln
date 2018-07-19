@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjaxPractice", "AjaxPractice\AjaxPractice.csproj", "{48E9EC30-F28C-48D5-B02C-39767D8E7B7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Again", "Again\Again.csproj", "{064BC1B3-70A3-4879-9357-1FC7496ADDA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48E9EC30-F28C-48D5-B02C-39767D8E7B7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E9EC30-F28C-48D5-B02C-39767D8E7B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E9EC30-F28C-48D5-B02C-39767D8E7B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E9EC30-F28C-48D5-B02C-39767D8E7B7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064BC1B3-70A3-4879-9357-1FC7496ADDA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064BC1B3-70A3-4879-9357-1FC7496ADDA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064BC1B3-70A3-4879-9357-1FC7496ADDA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064BC1B3-70A3-4879-9357-1FC7496ADDA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3FB046F-0100-4D24-9B74-D2DC38CFDC6A}
+	EndGlobalSection
+EndGlobal

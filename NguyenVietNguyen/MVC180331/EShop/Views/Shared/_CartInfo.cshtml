@@ -1,0 +1,23 @@
+﻿@using EShop.i18n
+<div class="nn-cart">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <img class="col-sm-5 nn-cart-img" src="/images/shoppingcart.gif" />
+            <ul class="col-sm-7">
+                <li><span id="cart-cnt">@XSession.Cart.Count</span> @Global.Items</li>
+                <li >$ <span id="cart-amt">@XSession.Cart.Amount</span></li>
+                <li ><a href="/Cart/Index">@Global.ViewCart</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style id="cart-effect">
+    ul li {
+        list-style-type: none;
+        margin-left: 0px;
+        padding-left: 0px;
+        
+    }
+  
+</style>

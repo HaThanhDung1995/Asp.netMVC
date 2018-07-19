@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Validate";
+}
+
+<h2>Validate</h2>
+<form action="/Regex/Validate" method="post">
+    <div class="form-group">
+        <label>Email</label>
+        <input name="Email" class="form-control" />
+        @ViewBag.EmailErr
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input name="Phone" class="form-control" />
+        @ViewBag.PhoneErr
+    </div>
+    <div class="form-group">
+        <label>CMND</label>
+        <input name="IdCard" class="form-control" />
+        @ViewBag.IdCardErr
+    </div>
+    <div class="form-group">
+        <label>Moto</label>
+        <input name="Moto" class="form-control" />
+        @ViewBag.MotoErr
+    </div>
+    <button class="btn btn-danger">Validate</button>
+</form>
+

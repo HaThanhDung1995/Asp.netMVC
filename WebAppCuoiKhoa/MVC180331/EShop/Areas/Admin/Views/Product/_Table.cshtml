@@ -1,0 +1,71 @@
+﻿<ul class="pager">
+    <li><a href="#">First</a></li>
+    <li><a href="#">Prev</a></li>
+    <li><a></a></li>
+    <li><a href="#">Next</a></li>
+    <li><a href="#">Last</a></li>
+</ul>
+<div class="panel panel-success">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Unit Price</th>
+                <th>Unit Brief</th>
+                <th>Discount</th>
+                <th>Special?</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="page">
+            
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var data = { PageSize: pageSize };
+        $.ajax({
+            url: "@ViewBag.Controller/GetPageCount",
+            data: data,
+            success: function (response) {
+                pageCount = response;
+                loadPage();
+            }
+        });
+
+        $(".pager li:eq(0)").click(function () {
+            pageNo = 0;
+            loadPage();
+        });
+        $(".pager li:eq(1)").click(function () {
+            pageNo--;
+            loadPage();
+        });
+        $(".pager li:eq(3)").click(function () {
+            pageNo++;
+            loadPage();
+        });
+        $(".pager li:eq(4)").click(function () {
+            pageNo = pageCount - 1;
+            loadPage();
+        });
+    });
+
+    var pageNo = 0;
+    var pageSize = 6;
+    var pageCount = 0;
+    function loadPage() {
+        $.ajax({
+            url: "@ViewBag.Controller/GetPage",
+            data: {PageNo: pageNo, PageSize: pageSize},
+            success: function (response) {
+                $("#page").html(response);
+                $(".pager a:eq(2)").html((pageNo + 1) + "/" + pageCount);
+            }
+        });
+    }
+</script>

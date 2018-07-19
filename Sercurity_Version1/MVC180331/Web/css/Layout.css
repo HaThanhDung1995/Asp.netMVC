@@ -1,0 +1,34 @@
+﻿body {
+    margin:0px;
+    padding:0px;
+    background-color:gray;
+}
+.container{
+    max-width:1000px;
+    margin:0 auto;
+    background-color:white;
+}
+header{
+    height:200px;
+    background-color:yellow;
+}
+nav{
+    line-height:30px;
+    background-color:aqua;
+}
+article, aside{
+    float:left;
+    min-height:400px;
+    width:75%;
+    background-color:white;
+}
+aside{
+    width:25%;
+    background-color:blue;
+}
+footer{
+    clear:both;
+    background-color:pink;
+    border-top:5px double red;
+    line-height:50px;
+}

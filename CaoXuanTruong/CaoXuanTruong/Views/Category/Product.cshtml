@@ -1,0 +1,24 @@
+﻿@model CaoXuanTruong.Models.Category
+@{
+    ViewBag.Title = "Product";
+}
+<Style>
+    img {
+        max-width: 95%;
+        height: 150px;
+    }
+</Style>
+<h2>Product</h2>
+@foreach (var item in Model.Products)
+{
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">@item.Name</div>
+            <div class="panel-body">
+                <img src="~/images/products/@item.Image" />
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+   
+}

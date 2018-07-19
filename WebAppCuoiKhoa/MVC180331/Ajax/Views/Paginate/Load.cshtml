@@ -1,0 +1,17 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.UnitPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>

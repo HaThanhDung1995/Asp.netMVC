@@ -1,0 +1,59 @@
+﻿@model EShop.Models.Order
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-danger">
+        <div class="panel-heading">@TempData["Message"]</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label>Id</label>
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Customer</label>
+                @Html.TextBoxFor(m => m.CustomerId, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Receiver</label>
+                @Html.TextBoxFor(m => m.Receiver, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            </div>           
+
+            <div class="form-group">
+                <label>Order Date</label>
+                @Html.TextBoxFor(m => m.OrderDate, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>RequireDate</label>
+                @Html.TextBoxFor(m => m.RequireDate, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Amount</label>
+                @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows=4 })
+            </div>
+        </div>
+        @if (Model.OrderDetails.Count > 0)
+        {
+            <div class="panel-body">
+                @Html.Partial("_OrderDetail", Model.OrderDetails.ToList())
+            </div>
+        }
+        <div class="panel-footer">
+            @Html.Partial("_Buttons")
+        </div>
+    </div>
+}
+

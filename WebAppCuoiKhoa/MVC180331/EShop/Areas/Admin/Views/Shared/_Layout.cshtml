@@ -1,0 +1,102 @@
+﻿@using EShop.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Administration</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/eshop.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar navbar-inverse row">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Trang chủ</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Admin/Product">Hàng hóa</a></li>
+                            <li><a href="/Admin/Supplier">Nhà cung cấp</a></li>
+                            <li><a href="/Admin/Category">Chủng loại</a></li>
+                            <li><a href="/Admin/Customer">Khách hàng</a></li>
+                            <li><a href="/Admin/Order">Hóa đơn</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thống kê <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Admin/Inventory/ByCategory">Theo loại</a></li>
+                            <li><a href="/Admin/Inventory/BySupplier">Theo hãng</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Admin/Revenue/ByProduct">Theo từng mặt hàng</a></li>
+                            <li><a href="/Admin/Revenue/ByCategory">Theo từng loại hàng</a></li>
+                            <li><a href="/Admin/Revenue/BySupplier">Theo từng hãng</a></li>
+                            <li><a href="/Admin/Revenue/ByCustomer">Theo từng khách hàng</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Admin/Revenue/ByYear">Theo từng năm</a></li>
+                            <li><a href="/Admin/Revenue/ByQuarter">Theo từng quí</a></li>
+                            <li><a href="/Admin/Revenue/ByMonth">Theo từng tháng</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tài khoản <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Admin/Home/Logoff">Đăng xuất</a></li>
+                            <li><a href="">Đổi mật khẩu</a></li>
+                            <li class="divider"></li>
+                            @*@{ var Master1 = Session["Master"] as Master;}
+                            @if (Master1 != null)
+                            {
+                                if (Master1.Id == "nghiemn")
+                                {*@
+                                    <li><a href="/Admin/Master"></a></li>
+                                    <li><a href="/Admin/Role">Quản lý vai trò</a></li>
+                                    <li><a href="/Admin/WebAction">Quản lý chức năng</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/Admin/MasterRole">Phân vai trò</a></li>
+                                    <li><a href="/Admin/ActionRole">Phân quyền</a></li>
+                                
+
+
+
+                            @*}*@
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nn-sheet row">
+            <article class="nn-body">
+                @RenderBody()
+            </article>
+        </div>
+
+        <footer class="panel panel-default row">
+            <div class="panel-heading">
+                <p class="text-center">Nhất Nghệ &copy; 2017. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

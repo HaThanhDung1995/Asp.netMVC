@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DisplayOnject</title>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>
+@foreach (var item in Model)
+{
+    @item.pname
+    @item.pamount
+    @item.pprice
+
+}

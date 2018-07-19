@@ -1,0 +1,37 @@
+﻿@using EShop.i18n
+
+@{
+    ViewBag.Title = @Global.Inventory;
+}
+
+<h2>@Global.Inventory @Global.By @Global.Category</h2>
+
+<div class="panel panel-success">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Global.Category</th>
+                <th>@Global.Quantity</th>
+                <th>@Global.Value</th>
+                <th>@Global.MinValue</th>
+                <th>@Global.MaxValue</th>
+                <th>@Global.AvgValue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Item in Model as List<EShop.Areas.Admin.Models.Report>)
+            {
+                <tr>
+                    <td>@Item.Group</td>
+                    <td>@Item.Quantity</td>
+                    <td>@Item.Value</td>
+                    <td>@Item.MinPrice</td>
+                    <td>@Item.MaxPrice</td>
+                    <td>@Item.AvgPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

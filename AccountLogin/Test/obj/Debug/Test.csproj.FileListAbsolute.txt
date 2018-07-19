@@ -1,0 +1,2 @@
+D:\c#\AccountLogin\Test\obj\Debug\Test.csprojAssemblyReference.cache
+D:\c#\AccountLogin\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache

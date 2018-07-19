@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                var a = parseFloat($("#a").val());
+                var b = parseFloat($("#b").val());
+                var o = $("#o").val();
+                switch (o) {
+                    case '+':
+                        c = a + b;
+                        break;
+                    case '-':
+                        c = a - b;
+                        break;
+                    case 'x':
+                        c = a * b;
+                        break;
+                    case ':':
+                        c = a / b;
+                        break;
+                }
+                $("#c").val(c);
+            });
+        });
+    </script>
+    <style>
+        input, select, button{
+            width:50px;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input id="a"/>
+        <select id="o">
+            <option>+</option>
+            <option>-</option>
+            <option>x</option>
+            <option>:</option>
+        </select>
+        <input id="b" />
+        <button type="button">=</button>
+        <input id="c" />
+    </form>
+</body>
+</html>

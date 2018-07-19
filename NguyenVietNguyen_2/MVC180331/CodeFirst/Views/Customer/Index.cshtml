@@ -1,0 +1,14 @@
+﻿@model List<CodeFirst.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var u in Model)
+{
+    <ul>
+        <li>@u.Id</li>
+        <li>@u.Fullname</li>
+    </ul>
+}

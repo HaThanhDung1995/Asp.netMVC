@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Mall</title>
+	
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/eshop.js"></script>
+
+    @RenderSection("scripts", required: false)
+    
+</head>
+<body>
+    <div class="container">
+        <header class="nn-header row">
+        	<div class="nn-company">
+	            <h1>Online shopping mall</h1>
+	            <h5>The center point of the professional programming</h5>
+            </div>
+            <img class="pull-right" src="/images/header-object.png" />
+        </header>
+
+        @Html.Partial("_Menu")
+
+        <div class="nn-sheet row">
+
+            <article class="col-sm-9">
+                <div class="nn-body">
+                	@RenderBody()
+                </div>
+            </article>
+
+            <aside class="col-sm-3">
+                <!--CartInfo-->
+                @Html.Partial("_CartInfo")
+                <!--/CartInfo-->
+
+                <!--Search-->
+                @Html.Partial("_Search")
+                <!--/Search-->
+
+                <!--Category-->
+                @Html.Action("_Category", "Home")
+                <!--/Category-->
+
+                <!--Supplier-->
+                @Html.Action("_Supplier", "Home")
+                <!--/Supplier-->
+
+                <!--Special-->
+                @Html.Partial("_Special")
+                <!--/Special-->
+
+                <!--_Favorite-->
+                @Html.Action("_Favorite", "Home")
+                <!--/_Favorite-->
+
+            </aside>
+        </div>
+
+        <footer class="panel panel-default row">
+	        <div class="panel-heading">
+	        	<p class="text-center">Nhất Nghệ &copy; 2017. All rights reserved.</p>
+	        </div>
+        </footer>
+    </div>
+</body>
+</html>

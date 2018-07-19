@@ -1,0 +1,41 @@
+﻿@using EShop.i18n
+@model EShop.Models.Customer
+@{
+    ViewBag.Title = @Global.UpdateAccount;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Global.UpdateAccount</div>
+    <div class="panel-body">
+        @Html.ValidationSummary()
+        @using (Html.BeginForm("Edit", "Account",
+            FormMethod.Post, new { enctype = "multipart/form-data" })) 
+        {
+            <div class="form-group">
+                <label>@Global.Username</label>
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control", @readonly="true" })
+            </div>
+            <div class="form-group">
+                <label>@Global.Password</label>
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>@Global.Fullname</label>
+                @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>@Global.Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>@Global.Photo</label>
+                <input type="file" name="UpPhoto" class="form-control"/>
+                @Html.HiddenFor(m => m.Photo)
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(m => m.Activated)
+                <button class="btn btn-danger">@Global.Update</button>
+            </div>
+        }
+    </div>
+</div>

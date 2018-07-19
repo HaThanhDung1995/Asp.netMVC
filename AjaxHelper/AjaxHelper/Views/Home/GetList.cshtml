@@ -1,0 +1,33 @@
+﻿@model List<global::AjaxHelper.Models.Category>
+@{
+    ViewBag.Title = "GetList";
+}
+<p>
+    <button class="btn btn-success" id="createProduct" data-url="@Url.Action("CreateProduct")">Create</button>
+</p>
+<h2>GetList</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>NameVN</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.NameVN</td>
+        </tr>
+    }
+    </tbody>
+</table>
+@using (Ajax.BeginForm("GetList","Home",new AjaxOptions()
+{
+    HttpMethod = "Get",
+    OnSuccess = "demo.init",
+    UpdateTargetId = "dvListProduct"
+})) { }

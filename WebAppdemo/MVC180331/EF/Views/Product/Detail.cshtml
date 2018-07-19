@@ -1,0 +1,30 @@
+﻿@model EF.Models.Product
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<img src="~/images/products/@Model.Image" />
+
+<ul>
+    <li>Id: @Model.Id</li>
+    <li>Name: @Model.Name</li>
+    <li>Unit Price: @Model.UnitPrice</li>
+    <li>Product Date: @Model.ProductDate</li>
+    <li>Category: @Model.Category.NameVN</li>
+</ul>
+
+<div>@Model.Description</div>
+
+<hr />
+
+<h3>HÀNG CÙNG LOẠI</h3>
+<ul>
+    @foreach (var p in Model.Category.Products)
+    {
+        <li>
+            <a href="@Url.Action("Detail", new { Id = p.Id })">@p.Name</a>
+        </li>
+    }
+</ul>

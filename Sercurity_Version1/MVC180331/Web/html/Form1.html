@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>FORM</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        <div>
+            <label>Họ và tên</label>
+            <input type="text" />
+        </div>
+        <div>
+            <label>Mật khẩu</label>
+            <input type="password" />
+        </div>
+        <div>
+            <label>Giới tính</label>
+            <input type="radio" name="gender" checked /> Male
+            <input type="radio" name="gender" /> Female
+        </div>
+        <div>
+            <label>Sở thích</label>
+            <label><input type="checkbox" name="st" checked /> Du lịch</label>
+            <input type="checkbox" name="st" checked /> Ẩm thực
+            <input type="checkbox" name="st" /> Âm nhạc
+            <input type="checkbox" name="st" /> Khác
+        </div>
+        <div>
+            <label>Quốc tịch</label>
+            <select>
+                <option value="VN">Việt Nam</option>
+                <option value="US" selected>United States</option>
+            </select>
+        </div>
+        <div>
+            <label>Ghi chú</label>
+            <textarea rows="5" style="width:300px;"></textarea>
+        </div>
+        <div>
+            <button>OK</button>
+            <button type="reset">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>

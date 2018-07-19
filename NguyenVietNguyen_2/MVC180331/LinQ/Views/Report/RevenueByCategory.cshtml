@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "RevenueByCategory";
+}
+
+<h2>RevenueByCategory</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Count</th>
+            <th>Value</th>
+            <th>Min Price</th>
+            <th>Max Price</th>
+            <th>Avg Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Category</td>
+                <td>@r.Count</td>
+                <td>@r.Value</td>
+                <td>@r.MinPrice</td>
+                <td>@r.MaxPrice</td>
+                <td>@Html.FormatValue(r.AvgPrice, "{0:#,###.#0}")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Category', 'Revenue'],
+            @foreach (var r in Model)
+            {
+              @:["@Html.Raw(r.Category)", @r.Value],
+            }
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+</script>
+
+<div id="piechart_3d" style="width: 900px; height: 500px;"></div>

@@ -1,0 +1,32 @@
+﻿@using EShop.i18n
+<div class="panel panel-success">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Global.Id</th>
+                <th>@Global.Name</th>
+                <th>@Global.NameVN</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Item in ViewBag.Items as List<EShop.Models.Category>)
+            {
+                <tr>
+                    <td>@Item.Id</td>
+                    <td>@Item.Name</td>
+                    <td>@Item.NameVN</td>
+                    <td>
+                        <a class="btn btn-sm btn-default" href="@ViewBag.Controller/Edit/@Item.Id">
+                            <span class="glyphicon glyphicon-star"></span> @Global.Edit
+                        </a>
+                        <a class="btn btn-sm btn-default" href="@ViewBag.Controller/Delete/@Item.Id">
+                            <span class="glyphicon glyphicon-star"></span> @Global.Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

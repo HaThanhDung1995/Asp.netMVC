@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.DropDownList("Master",null,new{@class="form-control"})
+<ul class="list-unstyled">
+    @foreach (var item in ViewBag.Role)
+    {
+        <li><input type="checkbox" value="@item.Id" />@item.Name</li>
+    }
+</ul>
+<script>
+   $(document).ready(function() {
+       $("#Master").change(function() {
+           var mid = $(this).val();
+           $.ajax({
+               url: "/Admin/MasterRole/GetRole",
+               data: { MasterId: mid },
+               success: function(response) {
+                   $(":checkbox").prop("checked", false);
+                   for (i = 0; i < response.length; i++) {
+                       $(":checkbox[value="+response[i]+"]").prop("checked", true);
+                   }
+               }
+
+       });
+       });
+       $("#Master").change();
+       $(":checkbox").click(function() {
+           var mid = $("#Master").val();
+           var rid = $(this).val();
+           $.ajax({
+               url: "/Admin/MasterRole/AddOrDelete",
+               data: { masterid: mid, roleid: rid },
+               success: function(response) {
+                   alert(response);
+               }
+           });
+       });
+   })
+</script>

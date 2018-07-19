@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<form id="formStudent" method="post">
+    <div class="form-group">
+        <label>Id</label>
+        @Html.Hidden("Id")
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        @Html.TextBox("Name", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        @Html.DropDownList("CategoryId", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Supplier</label>
+        @Html.DropDownList("SupplierId", null, new { @class = "form-control" })
+    </div>
+    
+</form>
+    
+<button id="btn-submit" class="btn btn-primary">Submit</button>
+<button id="btn-update" class="btn btn-primary">Update</button>
+
+
+
+<table class="table" id="list">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Category</td>
+            <td>Supplier</td>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script>
+    $(document).ready(function () {
+
+        $("#btn-submit").click(function () {
+            Add();
+        });
+        $("#btn-update").click(function () {
+            Update();
+        });
+        getAll();
+        function getAll() {
+            
+            $.ajax({
+                url: "/Home/Json",
+                type: "Get",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var html = '';
+                    $.each(response, function (key, item) {
+                        html += '<tr>';
+                        html += '<td>' + item.Id + '</td>';
+                        html += '<td>' + item.Name + '</td>';
+                        html += '<td>' + item.Category + '</td>';
+                        html += '<td>' + item.Supplier + '</td>';
+                        html += '<td><button class="btn-get" data-id=' + item.Id + '>Edit</button></td>';
+                        html += '<td><button class="btn-delete" data-id=' + item.Id + '>Delete</button></td>';
+                        html += '</tr>';
+                    });
+                    $("#list tbody").html(html);
+                   $(".btn-get").click(function () {
+                        var id = $(this).attr("data-id");
+                        Get(id);
+                    });
+                    $(".btn-delete").click(function () {
+                        var id = $(this).attr("data-id");
+                        Delete(id);
+                    });
+
+
+                }
+            });
+
+        }
+        function Add() {     
+            var name = $("#Name").val();
+            //var id= $("#Id").val();
+            //var cid= $("#CategoryId").val();
+            
+            //var sid= $("#SupplierId").val();
+            //var obj = {
+            //     id: $("#Id").val(),
+            //     cid: $("#CategoryId").val(),
+            //     name: $("#Name").val(),
+            //    sid: $("#SupplierId").val()
+            //};
+           //CategoyId sai tên CategoryId
+                $.ajax({
+                    url: "/Home/Create",
+                    data: JSON.stringify({ Name: name, CategoryId: $("#CategoryId").val(), SupplierId: $("#SupplierId").val() }), //Create thì ko cần truyền id vào tại vì có truyền thì nó cũng là 0 mà ko truyền cũng là 0
+                    type: "POST",
+                    contentType: 'application/json', // contentType chứ k phải dà dataType
+                    success: function (response) {
+                        getAll();
+                        alert(response);                 
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });  
+        }
+        function Get(id) {
+            $.ajax({
+                url: '/Home/Edit/' + id,
+                // data: JSON.stringify(dto),
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $('#Id').val(result.Id);
+                    $('#Name').val(result.Name);
+                    $('#CategoryId').val(result.Category);
+                    $('#SupplierId').val(result.Supplier);
+            
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function Update() {
+            var obj = {
+                 id: $("#Id").val(),
+                 categoryid: $("#CategoryId").val(),
+                 name: $("#Name").val(),
+                supplierid: $("#SupplierId").val()
+            };
+            $.ajax({
+                url: '/Home/Update',
+                data: JSON.stringify(obj),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    getAll();
+                    
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function Delete(id) {
+            $.ajax({
+                url: '/Home/Delete/' + id,
+                // data: JSON.stringify(dto),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert(result);
+                    getAll();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+
+        
+    });
+</script>
+
+
+
+

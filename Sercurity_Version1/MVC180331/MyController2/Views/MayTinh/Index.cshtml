@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Máy tính</h2>
+
+<form action="/MayTinh/Calculate" method="post">
+    <div class="form-group">
+        <label>Operand A</label>
+        <input name="a" class="form-control" value="@ViewBag.ThongTin.A" />
+    </div>
+
+    <div class="form-group">
+        <label>Operator</label>
+        <select name="o" class="form-control">
+            <option>+</option>
+            <option>-</option>
+            <option>x</option>
+            <option>:</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Operand B</label>
+        <input name="b" class="form-control" value="@ViewBag.ThongTin.B" />
+    </div>
+
+    <button class="btn btn-danger">=</button>
+
+    <div class="form-group">
+        <label>Result</label>
+        <input name="r" class="form-control" value="@ViewBag.ThongTin.C" />
+    </div>
+</form>
+
+<ul>
+    <li>A: @ViewBag.ThongTin.A</li>
+    <li>B: @ViewBag.ThongTin.B</li>
+    <li>C: @ViewBag.ThongTin.C</li>
+    <li>O: @ViewBag.ThongTin.O</li>
+</ul>

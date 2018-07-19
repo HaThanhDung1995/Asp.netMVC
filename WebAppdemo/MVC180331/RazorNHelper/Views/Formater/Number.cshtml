@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Number";
+}
+
+<h2>Number</h2>
+
+<ul>
+    <li>@ViewBag.Number1</li>
+    <li>@ViewBag.Number2</li>
+</ul>
+
+<ul>
+    <li>@Html.FormatValue(ViewBag.Number1, "{0:c}")</li>
+    <li>@Html.FormatValue(ViewBag.Number1, "{0:#,###.##0}")</li>
+    <li>@Html.FormatValue(ViewBag.Number2, "{0:p}")</li>
+</ul>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Date";
+}
+
+<h2>Date</h2>
+
+<ul>
+    <li>@ViewBag.Now</li>
+</ul>
+<ul>
+    <li>@Html.FormatValue(ViewBag.Now, "{0:d}")</li>
+    <li>@Html.FormatValue(ViewBag.Now, "{0:yyyy-MM-dd}")</li>
+    <li>@Html.FormatValue(ViewBag.Now, "{0:dd-MM-yyyy}")</li>
+    <li>@Html.FormatValue(ViewBag.Now, "{0:dddd, MMM dd, yyyy}")</li>
+    <li>@Html.FormatValue(ViewBag.Now, "{0:HH:mm:ss}")</li>
+    <li>@Html.FormatValue(ViewBag.Now, "{0:hh:mm tt}")</li>
+    <li>@String.Format("{0:hh:mm tt}", ViewBag.Now)</li>
+</ul>

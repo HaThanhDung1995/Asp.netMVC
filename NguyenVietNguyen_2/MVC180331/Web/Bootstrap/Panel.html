@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="alert alert-danger">
+            <span class="glyphicon glyphicon-home"></span>
+            Hello World
+        </h1>
+        <!--PANEL-->
+        <div class="panel panel-default">
+            <div class="panel-heading">Tiêu đề</div>
+            <div class="panel-body">Nội dung</div>
+            <div class="panel-footer">Chân</div>
+        </div>
+        <!--PANEL & FORM-->
+        <div class="panel panel-default">
+            <div class="panel-heading">ĐĂNG NHẬP</div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input class="form-control" />
+                    </div>
+                    <button class="btn btn-default">OK</button>
+                </form>
+            </div>
+        </div>
+        <!--PANEL & LIST-GROUP-->
+        <div class="panel panel-default">
+            <div class="panel-heading">DANH MỤC</div>
+            <div class="list-group">
+                <a class="list-group-item" href="#">Nokia</a>
+                <a class="list-group-item" href="#">Samsung</a>
+                <a class="list-group-item" href="#">Sony</a>
+                <a class="list-group-item" href="#">Seamen</a>
+                <a class="list-group-item" href="#">Motorola</a>
+                <a class="list-group-item" href="#">Apple</a>
+            </div>
+        </div>
+        <!--PANEL & TABLE-->
+        <div class="panel panel-default">
+            <div class="panel-heading">SINH VIEN</div>
+            <table class="table table-hover table-striped table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--PANEL & PRODUCT-->
+        <style>
+            .nn-img img{
+                max-width:95%;
+            }
+            .nn-img{
+                text-align:center;
+            }
+            .nn-img .row{
+                padding: 0px 10px;
+            }
+            .nn-img .pull-left{
+                font-family:Impact;
+                color:pink;
+                font-size:20px;
+            }
+        </style>
+        <div class="panel panel-default nn-img">
+            <div class="panel-heading">Nokia 2018</div>
+            <div class="panel-body">
+                <img src="../css/images/products/1017.jpg" />
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="pull-left">$100</div>
+                    <div class="pull-right">
+                        <button class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        </button>
+                        <button class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                        <button class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
