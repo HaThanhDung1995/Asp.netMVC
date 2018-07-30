@@ -1,0 +1,34 @@
+:host {
+  background: white;
+  display: block;
+  nav {
+    padding: 0 22px;
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      color: #4285F4;
+      font-weight: bolder;
+    }
+    .search {
+      align-self: center;
+      position: relative;
+      input {
+        font-size: 14px;
+        border: none;
+        border-bottom: 2px solid;
+        line-height: 2rem;
+        min-width: 250px;
+        outline: none;
+        &:focus {
+            border-color: #4285F4;
+        }
+      }
+      i {
+        font-size: 20px;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+      }
+    }
+  }
+}

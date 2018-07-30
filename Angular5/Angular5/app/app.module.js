@@ -10,6 +10,10 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var book_component_1 = require("./book.component");
+var post_component_1 = require("./post/post.component");
+var phuong_component_1 = require("./phuong/phuong.component");
+var dung_component_1 = require("./dung/dung.component");
+var header_component_1 = require("./header/header.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -17,8 +21,13 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule],
             declarations: [app_component_1.AppComponent,
-                book_component_1.BookComponent],
-            bootstrap: [book_component_1.BookComponent]
+                book_component_1.BookComponent,
+                ,
+                header_component_1.HeaderComponent,
+                post_component_1.PostComponent,
+                phuong_component_1.PhuongComponent,
+                dung_component_1.DungComponent],
+            bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
     return AppModule;
